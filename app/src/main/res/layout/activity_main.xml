@@ -1,19 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+    android:background="@color/grey"
+
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/firstLL"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
+        android:orientation="vertical"
+        android:paddingTop="260dp">
+
+
+        <!--Secondary view-->
+        <TextView
+            android:id="@+id/tvSecondaryView"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+
+            android:autoSizeMinTextSize="20sp"
+            android:autoSizeStepGranularity="1sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="@color/dirtWhite"
+            android:textSize="50dp" />
+
+        <!--Principal view-->
+        <TextView
+            android:id="@+id/tvPrincipalView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+            android:autoSizeMaxTextSize="70sp"
+            android:autoSizeMinTextSize="20sp"
+            android:autoSizeStepGranularity="1sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="70sp" />
+    </LinearLayout>
+
+    <!--Keyboard-->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstLL"
+        android:columnCount="4"
+        android:rowCount="5">
+
+        <!--Start buttons-->
+        <Button
+            android:id="@+id/goBackButton"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_margin="5dp"
+
+            android:onClick="goBackPressed"
+            android:text="&lt;="
+            android:textSize="40sp"
+            android:backgroundTint="@color/greyButton"/>
+
+        <Button
+            android:id="@+id/acButton"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+
+            android:onClick="acPressed"
+            android:text="AC"
+            android:textSize="40sp"
+            android:backgroundTint="@color/greyButton"/>
+
+        <Button
+            android:id="@+id/percentButton"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_margin="5dp"
+
+            android:onClick="operatorPressed"
+            android:text="%"
+            android:textSize="40sp"
+            android:backgroundTint="@color/greyButton"/>
+
+        <Button
+            android:id="@+id/divisionButton"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:layout_margin="5dp"
+
+            android:onClick="operatorPressed"
+            android:text="/"
+            android:textSize="40sp"
+            android:backgroundTint="@color/orange"/>
+
+        <Button
+            android:id="@+id/sevenButton"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="7"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/eightButton"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="8"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/nineButton"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="9"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/multiplyButton"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:layout_margin="5dp"
+
+            android:onClick="operatorPressed"
+            android:text="x"
+            android:textSize="40sp"
+            android:backgroundTint="@color/orange"/>
+
+        <Button
+            android:id="@+id/fourButton"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="4"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/fiveButton"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="5"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/sixButton"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="6"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/minusButton"
+            android:layout_row="2"
+            android:layout_column="3"
+            android:layout_margin="5dp"
+
+            android:onClick="operatorPressed"
+            android:text="-"
+            android:textSize="40sp"
+            android:backgroundTint="@color/orange"/>
+
+        <Button
+            android:id="@+id/oneButton"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="1"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/twoButton"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="2"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/threeButton"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="3"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/plusButton"
+            android:layout_row="3"
+            android:layout_column="3"
+            android:layout_margin="5dp"
+
+            android:onClick="operatorPressed"
+            android:text="+"
+            android:textSize="40sp"
+            android:backgroundTint="@color/orange"/>
+
+
+        <Button android:id="@+id/plusMinusButton"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_margin="5dp"
+
+            android:onClick="operatorPressed"
+            android:text="+/-"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/zeroButton"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+
+            android:onClick="numberPressed"
+            android:text="0"
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/commaButton"
+            android:layout_row="4"
+            android:layout_column="2"
+            android:layout_margin="5dp"
+
+            android:onClick="commaPressed"
+            android:text=","
+            android:textSize="40sp"
+            android:backgroundTint="@color/darkgreyButton"/>
+
+        <Button
+            android:id="@+id/equalButton"
+            android:layout_row="4"
+            android:layout_column="3"
+            android:layout_margin="5dp"
+
+            android:onClick="equalPressed"
+            android:text="="
+            android:textSize="40sp"
+            android:backgroundTint="@color/orange"/>
+    </GridLayout>
 </RelativeLayout>
