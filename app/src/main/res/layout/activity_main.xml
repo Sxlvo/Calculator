@@ -45,7 +45,6 @@
             android:autoSizeTextType="uniform"
             android:gravity="end"
             android:padding="10dp"
-            android:text="0"
             android:textColor="@color/white"
             android:textSize="70sp" />
     </LinearLayout>
