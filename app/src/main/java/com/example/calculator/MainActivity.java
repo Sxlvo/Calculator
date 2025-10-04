@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import java.security.Principal;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvSecondaryView;
@@ -46,20 +45,30 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("SetTextI18n")
     public void operatorPressed(View v) {
         Button opButton = (Button) v;
         String opTxt = opButton.getText().toString();
         String current = tvPrincipalView.getText().toString();
 
-        // se vuoto e premi "-", interpreta come segno del primo numero
+        // segno iniziale
         if (current.isEmpty() && opTxt.equals("-")) {
             tvPrincipalView.setText("-");
-            operator = false;   // non bloccare subito altri operatori, serve scrivere il numero
+            operator = false;
             AC.setText("C");
             return;
         }
 
-        // blocca doppio operatore di fila
+        if (operator) {
+            // se l'ultimo char è già un operatore, sostituiscilo
+            char last = current.charAt(current.length() - 1);
+            if (last=='+'||last=='-'||last=='x'||last=='/') {
+                tvPrincipalView.setText(current.substring(0, current.length()-1) + opTxt);
+            }
+            // rimani in stato "operator = true"
+            return;
+        }
+
         if (current.isEmpty()) {
             tvPrincipalView.setText("0" + opTxt);
             operator = true;
@@ -67,16 +76,19 @@ public class MainActivity extends AppCompatActivity {
             AC.setText("C");
             return;
         }
+
         char last = current.charAt(current.length()-1);
         if (last=='+'||last=='-'||last=='x'||last=='/') return;
 
         tvPrincipalView.append(opTxt);
-        operator = true;
+        operator = true;   // ora c’è un operatore in coda
         comma = false;
         AC.setText("C");
     }
 
 
+
+    @SuppressLint("SetTextI18n")
     public void equalPressed(View v) {
         String cur = tvPrincipalView.getText().toString();
         tvSecondaryView.setText(cur);
@@ -92,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("SetTextI18n")
     public void goBackPressed(View v) {
         String current = tvPrincipalView.getText().toString();
         if (current.isEmpty()) {
@@ -114,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("SetTextI18n")
     public void acPressed(View v){
         tvPrincipalView.setText("");
         tvSecondaryView.setText("");
@@ -185,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("SetTextI18n")
     public void plusMinusPressed(View v) {
         String current = tvPrincipalView.getText().toString();
         if (current.isEmpty()) return;
